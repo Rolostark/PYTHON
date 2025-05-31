@@ -26,6 +26,7 @@ print(a % b)  # Módulo
 
 ```python
 # If
+edad = 19
 if edad >= 18:
     print("Mayor de edad")
 else:
