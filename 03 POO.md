@@ -28,13 +28,23 @@ ana.saludar()  # Imprime: Hola, soy Ana
 La **herencia** permite crear una nueva clase a partir de otra existente. La clase nueva (subclase) hereda los atributos y métodos de la clase base (superclase), y además puede agregar nuevos o modificar los existentes.
 
 ```python
-class Empleado(Persona):       # Empleado hereda de Persona
-    def trabajar(self):        # Método adicional
-        print(f"{self.nombre} está trabajando")
+# Definición de la clase base Persona
+class Persona:
+    def __init__(self, nombre):   # Método constructor, inicializa el atributo 'nombre'
+        self.nombre = nombre      # Guarda el nombre en el objeto
 
-luis = Empleado("Luis")
-luis.saludar()    # Usa el método heredado
-luis.trabajar()   # Usa el método propio
+    def saludar(self):            # Método para saludar
+        print(f"Hola, soy {self.nombre}")  # Imprime un saludo usando el nombre
+
+# Definición de la clase Empleado que hereda de Persona
+class Empleado(Persona):          # Empleado hereda de Persona
+    def trabajar(self):           # Nuevo método específico de Empleado
+        print(f"{self.nombre} esta trabajando")  # Imprime que el empleado está trabajando
+
+# Crear un objeto llamado luis de la clase Empleado
+luis = Empleado("Luis")           # Se crea un empleado llamado Luis
+luis.saludar()                    # Llama al método heredado de Persona
+luis.trabajar()                   # Llama al método propio de Empleado
 ```
 
 ---
