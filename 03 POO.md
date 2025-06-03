@@ -1,32 +1,47 @@
 # 3. Clases y objetos, herencia, polimorfismo y métodos mágicos
 
+En este apartado aprenderás cómo funcionan los pilares de la Programación Orientada a Objetos (POO) en Python, acompañados de explicaciones y ejemplos.
+
+---
+
 ## Paso 1: Clases y objetos
+
+Una **clase** es como un molde o plantilla para crear objetos. Un **objeto** es una instancia de una clase, con características (atributos) y comportamientos (métodos).
 
 ```python
 class Persona:
-    def __init__(self, nombre):
-        self.nombre = nombre
+    def __init__(self, nombre):   # Método especial que inicializa el objeto
+        self.nombre = nombre      # Atributo del objeto
 
-    def saludar(self):
+    def saludar(self):            # Método para saludar
         print(f"Hola, soy {self.nombre}")
 
+# Crear un objeto "ana" de la clase Persona
 ana = Persona("Ana")
-ana.saludar()
+ana.saludar()  # Imprime: Hola, soy Ana
 ```
+
+---
 
 ## Paso 2: Herencia
 
+La **herencia** permite crear una nueva clase a partir de otra existente. La clase nueva (subclase) hereda los atributos y métodos de la clase base (superclase), y además puede agregar nuevos o modificar los existentes.
+
 ```python
-class Empleado(Persona):
-    def trabajar(self):
+class Empleado(Persona):       # Empleado hereda de Persona
+    def trabajar(self):        # Método adicional
         print(f"{self.nombre} está trabajando")
 
 luis = Empleado("Luis")
-luis.saludar()
-luis.trabajar()
+luis.saludar()    # Usa el método heredado
+luis.trabajar()   # Usa el método propio
 ```
 
+---
+
 ## Paso 3: Polimorfismo
+
+El **polimorfismo** es la capacidad de usar una misma interfaz (método) para diferentes tipos de objetos. Es decir, distintos objetos pueden responder de manera diferente a un mismo método.
 
 ```python
 class Animal:
@@ -34,16 +49,23 @@ class Animal:
         print("Sonido genérico")
 
 class Perro(Animal):
-    def hablar(self):
+    def hablar(self):          # Sobrescribe el método de Animal
         print("Guau")
 
-def hacer_hablar(animal):
+def hacer_hablar(animal):     # Función que acepta cualquier animal
     animal.hablar()
 
-hacer_hablar(Perro())
+hacer_hablar(Perro())         # Imprime: Guau
 ```
 
-## Paso 4: Métodos mágicos (__init__, __str__)
+---
+
+## Paso 4: Métodos mágicos (`__init__`, `__str__`)
+
+Los **métodos mágicos** (o dunder methods) son métodos especiales que Python reconoce por tener dos guiones bajos antes y después de su nombre. Permiten modificar el comportamiento por defecto de los objetos.
+
+- `__init__`: Se llama automáticamente al crear una nueva instancia.
+- `__str__`: Define cómo se representa el objeto como texto (por ejemplo, al usar `print()`).
 
 ```python
 class Libro:
@@ -54,5 +76,13 @@ class Libro:
         return f"Libro: {self.titulo}"
 
 libro = Libro("1984")
-print(libro)
+print(libro)   # Imprime: Libro: 1984
 ```
+
+---
+
+**Resumen:**  
+- **Clases y objetos**: Creas moldes y luego instancias de esos moldes.
+- **Herencia**: Puedes reutilizar y extender código de otras clases.
+- **Polimorfismo**: Distintos objetos pueden comportarse de manera diferente usando la misma interfaz.
+- **Métodos mágicos**: Personalizan el comportamiento de tus objetos en Python.
